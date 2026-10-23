@@ -18,7 +18,7 @@ export default function Header() {
     <header className="sticky top-0 z-20 border-b border-line bg-blush/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
         <a href="#top" className="font-display text-xl font-medium tracking-tight">
-          Ivy Villafranca
+          Ivy Gaye Villafranca
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
