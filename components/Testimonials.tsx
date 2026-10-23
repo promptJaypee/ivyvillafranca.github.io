@@ -7,8 +7,8 @@ const testimonials = [
   },
   {
     quote:
-      "She caught two double-bookings before they became a problem and never once made me feel like I'd overloaded her.",
-    name: "Marcus Feldt",
+      "He caught two double-bookings before they became a problem and never once made me feel like I'd overloaded her.",
+    name: "Juan Dela Cruz",
     role: "Operations lead, e-commerce brand",
   },
 ];
