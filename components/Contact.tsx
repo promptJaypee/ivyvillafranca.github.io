@@ -1,11 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
+  const [minimumDate, setMinimumDate] = useState("");
+  const [preferredDate, setPreferredDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    const localDate = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0"),
+    ].join("-");
+
+    setMinimumDate(localDate);
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -22,6 +35,7 @@ export default function Contact() {
           name: formData.get("name"),
           email: formData.get("email"),
           message: formData.get("message"),
+          preferredDate: formData.get("preferredDate"),
         }),
       });
       const result: { error?: string } = await response.json();
@@ -31,6 +45,7 @@ export default function Contact() {
       }
 
       form.reset();
+      setPreferredDate("");
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -96,6 +111,26 @@ export default function Contact() {
               autoComplete="email"
               placeholder="you@company.com"
               className="rounded border border-line bg-blush px-4 py-3 text-[0.98rem] outline-none focus:border-pink focus:ring-2 focus:ring-pink"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="preferred-date" className="text-sm text-mauve">
+              Preferred call date (optional)
+            </label>
+            <input
+              id="preferred-date"
+              name="preferredDate"
+              type="date"
+              min={minimumDate}
+              value={preferredDate}
+              disabled={!minimumDate}
+              onChange={(event) => {
+                const date = event.currentTarget.value;
+                if (!date || date >= minimumDate) {
+                  setPreferredDate(date);
+                }
+              }}
+              className="rounded border border-line bg-blush px-4 py-3 text-[0.98rem] outline-none focus:border-pink focus:ring-2 focus:ring-pink disabled:opacity-70"
             />
           </div>
           <div className="flex flex-col gap-2">

@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-line px-5 py-10 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4">
         <span className="text-sm text-mauve">
-          © 2026 Ivy Villafranca. Virtual assistant services.
+          © 2026 Ivy Hernandez. Virtual assistant services.
         </span>
         <div className="flex gap-4">
           <a href="#" aria-label="LinkedIn">

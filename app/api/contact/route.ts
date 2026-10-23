@@ -6,6 +6,7 @@ type ContactSubmission = {
   name?: unknown;
   email?: unknown;
   message?: unknown;
+  preferredDate?: unknown;
 };
 
 export async function POST(request: Request) {
@@ -28,6 +29,13 @@ export async function POST(request: Request) {
     typeof submission.email === "string" ? submission.email.trim() : "";
   const message =
     typeof submission.message === "string" ? submission.message.trim() : "";
+  const preferredDate =
+    typeof submission.preferredDate === "string"
+      ? submission.preferredDate.trim()
+      : "";
+  const parsedPreferredDate = preferredDate
+    ? new Date(`${preferredDate}T00:00:00.000Z`)
+    : null;
 
   if (
     !name ||
@@ -36,10 +44,18 @@ export async function POST(request: Request) {
     email.length > 254 ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
     !message ||
-    message.length > 5000
+    message.length > 5000 ||
+    (preferredDate &&
+      (!/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) ||
+        !parsedPreferredDate ||
+        Number.isNaN(parsedPreferredDate.getTime()) ||
+        parsedPreferredDate.toISOString().slice(0, 10) !== preferredDate))
   ) {
     return Response.json(
-      { error: "Please check your name, email, and message, then try again." },
+      {
+        error:
+          "Please check your name, email, preferred date, and message, then try again.",
+      },
       { status: 400 },
     );
   }
@@ -67,7 +83,7 @@ export async function POST(request: Request) {
         to: recipient,
         replyTo: email,
         subject: `New website inquiry from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        text: `Name: ${name}\nEmail: ${email}${preferredDate ? `\nPreferred call date: ${preferredDate}` : ""}\n\nMessage:\n${message}`,
       }),
       resend.emails.send({
         from,
