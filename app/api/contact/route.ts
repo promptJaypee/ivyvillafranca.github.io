@@ -61,12 +61,12 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL;
   const recipient = process.env.CONTACT_TO_EMAIL;
+  const from = "onboarding@resend.dev";
 
-  if (!apiKey || !from || !recipient) {
+  if (!apiKey || !recipient) {
     console.error(
-      "Contact form email is not configured. Set RESEND_API_KEY, RESEND_FROM_EMAIL, and CONTACT_TO_EMAIL.",
+      "Contact form email is not configured. Set RESEND_API_KEY and CONTACT_TO_EMAIL.",
     );
     return Response.json(
       { error: "The contact form is temporarily unavailable. Please try again later." },
