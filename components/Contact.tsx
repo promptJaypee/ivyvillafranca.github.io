@@ -50,12 +50,12 @@ export default function Contact() {
           </p>
 
           <div className="mt-8 flex flex-col gap-4">
-            <a href="mailto:hello@anabeltran.co" className="flex items-center gap-3 text-[0.98rem]">
+            <a href="mailto:villafrancaivygaye.hernandez@gmail.com" className="flex items-center gap-3 text-[0.98rem]">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--pink-deep)" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px] shrink-0">
                 <path d="M4 6h16v12H4z" />
                 <path d="M4 7l8 6 8-6" />
               </svg>
-              hello@anabeltran.co
+              villafrancaivygaye.hernandez@gmail.com
             </a>
             <a href="#" className="flex items-center gap-3 text-[0.98rem]">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--pink-deep)" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px] shrink-0">
