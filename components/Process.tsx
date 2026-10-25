@@ -38,7 +38,7 @@ export default function Process() {
         <div className="relative grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4 md:gap-x-0">
           <div className="pointer-events-none absolute left-[5%] right-[5%] top-[21px] hidden h-px bg-line md:block" />
           {steps.map((s) => (
-            <div key={s.n} className="relative pr-6">
+            <div key={s.n} className="glass-card relative p-5 md:mr-3 md:min-h-[220px] md:p-6">
               <div
                 className={`relative z-10 mb-5 flex h-[42px] w-[42px] items-center justify-center rounded-full border font-display text-lg font-medium ${
                   s.n % 2 !== 0

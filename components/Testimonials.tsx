@@ -18,7 +18,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"  
-      className="bg-lavender px-5 py-16 md:px-8 md:py-24"
+      className="px-5 py-16 md:px-8 md:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
@@ -43,7 +43,7 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="flex h-full flex-col rounded-2xl border border-line bg-blush/70 p-7 md:p-9"
+              className="glass-card flex h-full flex-col p-7 md:p-9"
             >
               <div aria-hidden="true" className="mb-5 font-display text-4xl leading-none text-pink-deep">
                 &ldquo;

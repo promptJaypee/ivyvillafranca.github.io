@@ -157,13 +157,13 @@ export default function Projects() {
 
       <div
           aria-label="Sample project concepts"
-          className="bg-lavender px-5 py-16 md:px-8 md:py-24"
+          className="px-5 py-16 md:px-8 md:py-24"
         >
           <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
             {projects.map((project) => (
               <article
                 key={project.number}
-                className="flex flex-col rounded-2xl border border-line bg-blush p-4 md:p-5"
+                className="glass-card flex flex-col p-4 md:p-5"
               >
                 <div className="mb-6 rounded-2xl bg-pink-soft p-4">
                   <ProjectPreview visual={project.visual} />

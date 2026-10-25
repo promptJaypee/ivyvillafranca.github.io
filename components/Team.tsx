@@ -24,7 +24,7 @@ export default function Team() {
     <section
       id="team"
       aria-labelledby="team-heading"
-      className="bg-lavender px-5 py-16 md:px-8 md:py-24"
+      className="px-5 py-16 md:px-8 md:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 max-w-2xl md:mb-14">
@@ -40,7 +40,7 @@ export default function Team() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-[0.82fr_1.18fr] md:gap-8">
-          <article className="flex flex-col rounded-2xl border border-line bg-blush/70 p-6 md:p-8">
+          <article className="glass-panel flex flex-col p-6 md:p-8">
             <div className="mb-7 flex min-h-[230px] items-center justify-center overflow-hidden rounded-xl bg-pink-soft">
               <svg
                 viewBox="0 0 240 220"

@@ -166,7 +166,7 @@ export default function Contact() {
             {status === "sent"
               ? "Thanks for reaching out. Your message was sent, and a copy is on its way to your email."
               : status === "error"
-                ? "We couldn’t send your message. Please try again or email hello@ivyvillafranca.com"
+                ? "We couldn’t send your message. Please try again or email villafranca.ivygayehernandez@gmail.com"
                 : "Your message will be sent to Ivy, and you’ll receive a copy by email."}
           </p>
         </form>

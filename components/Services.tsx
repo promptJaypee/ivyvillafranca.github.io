@@ -46,11 +46,11 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="border-t border-line">
+        <div className="grid gap-3">
           {services.map((s) => (
             <div
               key={s.num}
-              className="grid grid-cols-[32px_1fr] gap-6 border-b border-line py-7 md:grid-cols-[44px_1.1fr_1.4fr] md:gap-7"
+              className="glass-card grid grid-cols-[32px_1fr] gap-4 p-5 md:grid-cols-[44px_1.1fr_1.4fr] md:items-center md:gap-7 md:p-6"
             >
               <span className="pt-0.5 font-display text-base font-medium text-pink-deep">
                 {s.num}

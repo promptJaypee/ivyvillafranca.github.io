@@ -1,7 +1,7 @@
 export default function IVout() {
   return (
-    <section id="about" className="bg-lavender px-5 py-16 md:px-8 md:py-24">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+    <section id="about" className="px-5 py-16 md:px-8 md:py-24">
+      <div className="glass-panel mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 p-6 sm:p-8 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:p-12">
         <div className="mx-auto w-full max-w-[240px]">
           <svg
             viewBox="0 0 300 300"
