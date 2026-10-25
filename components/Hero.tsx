@@ -5,17 +5,17 @@ export default function Hero() {
         <div>
           <div className="mb-5 flex items-center gap-2.5 text-[0.95rem] text-mauve">
             <span className="h-2 w-2 rounded-full bg-pink" />
-            Virtual assistant for founders & small teams
+            Virtual Assistant - Digital Marketing - Web Development
           </div>
 
           <h1 className="mb-6 max-w-[12ch] font-display text-4xl font-medium leading-[1.08] tracking-tight md:text-6xl">
-            The organized calm behind your busiest days.
+            Creative solutions. Organized workflows. Website that works for you.
           </h1>
 
           <p className="mb-8 max-w-[46ch] text-lg text-mauve">
-            I handle the inbox, the calendar, the follow-ups, and the small
-            stuff that quietly eats your week — so you can spend your time on
-            the work only you can do.
+            I help entrepreneurs and business owners manage daily tasks, 
+            grow their online presence, and keep digital projects running 
+            smoothly through creative and reliable support.
           </p>
 
           <div className="mb-10 flex flex-wrap gap-3.5">
@@ -23,20 +23,20 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-plum bg-plum px-6 py-3 text-sm font-medium text-blush transition hover:-translate-y-0.5 hover:border-pink-deep hover:bg-pink-deep hover:text-black hover:text-plum"
             >
-              Book for free
+              Book for Free Consultation
             </a>
             <a
               href="#services"
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium transition hover:border-pink-soft hover:bg-pink-soft"
             >
-              See what I take off your plate
+              Explore My Services
             </a>
           </div>
 
           <div className="flex gap-8 border-t border-line pt-7">
             <div className="flex flex-col gap-1">
-              <strong className="font-display text-2xl font-medium">6 yrs</strong>
-              <span className="text-sm text-mauve">Supporting founders remotely</span>
+              <strong className="font-display text-2xl font-medium">5 yrs</strong>
+              <span className="text-sm text-mauve">Supporting businesses and projects remotely</span>
             </div>
             <div className="flex flex-col gap-1">
               <strong className="font-display text-2xl font-medium">GMT+8</strong>

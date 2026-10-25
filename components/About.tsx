@@ -37,7 +37,7 @@ export default function IVout() {
         </div>
 
         <div>
-          <p className="mb-5 text-mauve">Hi, I&apos;m Ivy —</p>
+          <p className="mb-5 text-mauve">Hello, I&apos;m Ivy —</p>
           <p className="mb-5">
             I've spent close to four years working directly with founders and
             small teams as their virtual assistant — inbox, calendar, client
