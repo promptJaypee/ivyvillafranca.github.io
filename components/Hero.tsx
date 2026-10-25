@@ -5,11 +5,11 @@ export default function Hero() {
         <div>
           <div className="mb-5 flex items-center gap-2.5 text-[0.95rem] text-mauve">
             <span className="h-2 w-2 rounded-full bg-pink" />
-            Virtual Assistant - Digital Marketing - Web Development
+            Virtual Assistant for founders and business owners.
           </div>
 
           <h1 className="mb-6 max-w-[12ch] font-display text-4xl font-medium leading-[1.08] tracking-tight md:text-6xl">
-            Creative solutions. Organized workflows. Website that works for you.
+            The Organized Calm Behind Your Busiest Days.
           </h1>
 
           <p className="mb-8 max-w-[46ch] text-lg text-mauve">
