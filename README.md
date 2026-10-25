@@ -31,5 +31,5 @@ Then open http://localhost:3000.
 
 - Swap the placeholder name, copy, and testimonials for the real ones.
 - Brand color lives in `app/globals.css` as `--pink` (currently `#faaeff`) — change it there and it propagates everywhere via Tailwind's `pink` color.
-- Copy `.env.example` to `.env.local`, then set `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `CONTACT_TO_EMAIL`.
-- Verify the sender domain in Resend before setting `RESEND_FROM_EMAIL`. Keep the API key private and configure the same environment variables in your deployment provider.
+- Copy `.env.example` to `.env.local`, then set `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `CONTACT_TO_EMAIL`. Use a sender address on the verified `hirevaivy.com` domain, such as `Ivy Villafranca <hello@hirevaivy.com>`.
+- Keep the API key private and configure the same environment variables in your deployment provider.
