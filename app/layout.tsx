@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans } from "next/font/google";
 import PageLoader from "@/components/PageLoader";
+import ThemeToggle from "@/components/ThemeToggle";
 import "@/app/globals.css";
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="font-body text-[17px] leading-relaxed antialiased">
         <PageLoader>{children}</PageLoader>
+        <ThemeToggle />
       </body>
     </html>
   );

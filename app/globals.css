@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --pink: #faaeff;
   --pink-deep: #e478ec;
   --pink-soft: #fce3fd;
@@ -15,23 +16,6 @@
   --glass-strong: rgba(255, 250, 249, 0.78);
   --glass-border: rgba(255, 255, 255, 0.82);
   --glass-shadow: 0 18px 55px rgba(83, 47, 85, 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --pink: #f7a8fc;
-    --pink-deep: #ffc6ff;
-    --pink-soft: #3a2440;
-    --plum: #f7ecf8;
-    --blush: #1d1420;
-    --lavender: #2a1c2f;
-    --mauve: #cba9c7;
-    --line: rgba(247, 236, 248, 0.14);
-    --glass-bg: rgba(42, 28, 47, 0.62);
-    --glass-strong: rgba(42, 28, 47, 0.78);
-    --glass-border: rgba(247, 236, 248, 0.2);
-    --glass-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
-  }
 }
 
 html {
@@ -119,5 +103,682 @@ header {
 
   .glass-card:hover {
     transform: none;
+  }
+}
+
+/* =====================================================================
+   FROZEN GLASS LAYER
+   Everything above is your original, untouched. Everything below is
+   additive. All glass colours are theme variables (--f-*), so the
+   light and dark themes share one set of rules and only the values
+   change (see the DARK THEME block).
+   ===================================================================== */
+
+:root {
+  --frost-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+
+  /* surfaces */
+  --f-fill-1: rgba(255, 255, 255, 0.64);
+  --f-fill-2: rgba(255, 250, 249, 0.26);
+  --f-fill-3: rgba(222, 236, 255, 0.34);
+  --f-hover-1: rgba(255, 255, 255, 0.82);
+  --f-hover-2: rgba(255, 250, 249, 0.42);
+  --f-hover-3: rgba(222, 236, 255, 0.5);
+  --f-border: rgba(255, 255, 255, 0.72);
+  --f-edge: rgba(255, 255, 255, 0.95);
+  --f-edge-lo: rgba(255, 255, 255, 0.25);
+  --f-glow: rgba(255, 255, 255, 0.28);
+  --f-glow-hover: rgba(255, 255, 255, 0.4);
+  --f-sheen: rgba(255, 255, 255, 0.5);
+  --f-sheen-opacity: 0.5;
+  --f-sheen-opacity-hover: 0.8;
+  --f-grain-opacity: 0.13;
+  --f-shadow: rgba(83, 47, 85, 0.4);
+  --f-solid: rgba(255, 255, 255, 0.9);
+
+  /* header */
+  --f-header-1: rgba(255, 255, 255, 0.74);
+  --f-header-2: rgba(255, 250, 249, 0.5);
+  --f-header-shadow: rgba(83, 47, 85, 0.08);
+
+  /* form fields */
+  --f-field: rgba(255, 255, 255, 0.5);
+  --f-field-focus: rgba(255, 255, 255, 0.78);
+  --f-field-border: rgba(255, 255, 255, 0.8);
+  --f-field-inset: rgba(42, 24, 48, 0.07);
+
+  /* page-level colour washes + hero blobs */
+  --f-wash-1: rgba(159, 208, 255, 0.4);
+  --f-wash-2: rgba(190, 215, 255, 0.34);
+  --f-wash-3: rgba(250, 174, 255, 0.24);
+  --f-blob-pink-o: 0.55;
+  --f-blob-ice-o: 0.8;
+  --f-blob-lilac-o: 0.65;
+
+  /* small pieces */
+  --f-pill-1: rgba(255, 255, 255, 0.6);
+  --f-pill-2: rgba(255, 255, 255, 0.22);
+  --f-tile-1: rgba(255, 255, 255, 0.45);
+  --f-tile-2: rgba(255, 255, 255, 0.14);
+  --f-tile-hover-1: rgba(255, 255, 255, 0.7);
+  --f-tile-hover-2: rgba(255, 255, 255, 0.26);
+  --f-avatar-1: rgba(255, 255, 255, 0.72);
+  --f-avatar-2: rgba(252, 227, 253, 0.5);
+  --f-avatar-3: rgba(207, 230, 255, 0.6);
+  --f-dot: rgba(42, 24, 48, 0.18);
+  --f-dot-border: rgba(255, 255, 255, 0.8);
+  --f-icon-hover-1: rgba(252, 227, 253, 0.92);
+  --f-icon-hover-2: rgba(255, 255, 255, 0.5);
+  --f-card-tint: #ffffff; /* calendar card in the Hero illustration */
+
+  /* buttons */
+  --f-btn1-bg: linear-gradient(135deg, rgba(60, 34, 68, 0.94), rgba(42, 24, 48, 0.9));
+  --f-btn1-color: #fffaf9;
+  --f-btn1-shadow: rgba(42, 24, 48, 0.55);
+  --f-btn1-hover-bg: linear-gradient(135deg, rgba(228, 120, 236, 0.95), rgba(250, 174, 255, 0.85));
+  --f-btn1-hover-color: #2a1830;
+  --f-btn1-hover-shadow: rgba(228, 120, 236, 0.6);
+  --f-btn2-hover-1: rgba(252, 227, 253, 0.9);
+  --f-btn2-hover-2: rgba(255, 255, 255, 0.45);
+}
+
+/* =====================================================================
+   DARK THEME
+   Applied when <html data-theme="dark"> (set by the ThemeToggle button).
+   First the original brand tokens flip, so every existing Tailwind class
+   (text-plum, text-mauve, bg-blush, divide-line ...) follows along, then
+   the frosted-glass values are retuned for a dark backdrop: faint white
+   tints, thin bright edges, deep shadows, glowing colour washes.
+   ===================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* brand tokens (roles stay the same, values flip) */
+  --pink-soft: #2e1a36;
+  --plum: #f7eaf8; /* main text */
+  --blush: #130b19; /* page background */
+  --lavender: #1c1024;
+  --mauve: #bda5ba; /* muted text */
+  --line: rgba(255, 240, 255, 0.16);
+  --glass-bg: rgba(40, 22, 48, 0.5);
+  --glass-strong: rgba(48, 28, 58, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 18px 55px rgba(0, 0, 0, 0.5);
+
+  /* surfaces */
+  --f-fill-1: rgba(255, 255, 255, 0.1);
+  --f-fill-2: rgba(255, 255, 255, 0.03);
+  --f-fill-3: rgba(110, 140, 255, 0.09);
+  --f-hover-1: rgba(255, 255, 255, 0.16);
+  --f-hover-2: rgba(255, 255, 255, 0.06);
+  --f-hover-3: rgba(110, 140, 255, 0.14);
+  --f-border: rgba(255, 255, 255, 0.16);
+  --f-edge: rgba(255, 255, 255, 0.3);
+  --f-edge-lo: rgba(255, 255, 255, 0.06);
+  --f-glow: rgba(255, 255, 255, 0.05);
+  --f-glow-hover: rgba(255, 255, 255, 0.09);
+  --f-sheen: rgba(255, 255, 255, 0.14);
+  --f-sheen-opacity: 0.6;
+  --f-sheen-opacity-hover: 0.9;
+  --f-grain-opacity: 0.1;
+  --f-shadow: rgba(0, 0, 0, 0.6);
+  --f-solid: rgba(34, 20, 42, 0.95);
+
+  /* header */
+  --f-header-1: rgba(30, 18, 38, 0.72);
+  --f-header-2: rgba(30, 18, 38, 0.5);
+  --f-header-shadow: rgba(0, 0, 0, 0.35);
+
+  /* form fields */
+  --f-field: rgba(255, 255, 255, 0.06);
+  --f-field-focus: rgba(255, 255, 255, 0.1);
+  --f-field-border: rgba(255, 255, 255, 0.18);
+  --f-field-inset: rgba(0, 0, 0, 0.35);
+
+  /* washes + blobs */
+  --f-wash-1: rgba(90, 130, 255, 0.25);
+  --f-wash-2: rgba(130, 100, 255, 0.2);
+  --f-wash-3: rgba(250, 174, 255, 0.14);
+  --f-blob-pink-o: 0.32;
+  --f-blob-ice-o: 0.38;
+  --f-blob-lilac-o: 0.34;
+
+  /* small pieces */
+  --f-pill-1: rgba(255, 255, 255, 0.1);
+  --f-pill-2: rgba(255, 255, 255, 0.04);
+  --f-tile-1: rgba(255, 255, 255, 0.07);
+  --f-tile-2: rgba(255, 255, 255, 0.02);
+  --f-tile-hover-1: rgba(255, 255, 255, 0.12);
+  --f-tile-hover-2: rgba(255, 255, 255, 0.04);
+  --f-avatar-1: rgba(255, 255, 255, 0.12);
+  --f-avatar-2: rgba(250, 174, 255, 0.14);
+  --f-avatar-3: rgba(110, 150, 255, 0.16);
+  --f-dot: rgba(255, 255, 255, 0.24);
+  --f-dot-border: rgba(255, 255, 255, 0.2);
+  --f-icon-hover-1: rgba(255, 255, 255, 0.2);
+  --f-icon-hover-2: rgba(255, 255, 255, 0.08);
+  --f-card-tint: #4a2c57;
+
+  /* buttons: bright pink glass in dark mode */
+  --f-btn1-bg: linear-gradient(135deg, rgba(250, 174, 255, 0.95), rgba(228, 120, 236, 0.9));
+  --f-btn1-color: #2a1830;
+  --f-btn1-shadow: rgba(228, 120, 236, 0.45);
+  --f-btn1-hover-bg: linear-gradient(135deg, #ffffff, rgba(250, 174, 255, 0.95));
+  --f-btn1-hover-color: #2a1830;
+  --f-btn1-hover-shadow: rgba(250, 174, 255, 0.55);
+  --f-btn2-hover-1: rgba(255, 255, 255, 0.18);
+  --f-btn2-hover-2: rgba(255, 255, 255, 0.08);
+}
+
+/* The original body gradient is light-tuned, so dark gets its own */
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(250, 174, 255, 0.16), transparent 34rem),
+    radial-gradient(ellipse at 88% 32%, rgba(228, 120, 236, 0.1), transparent 32rem),
+    radial-gradient(ellipse at 46% 78%, rgba(90, 60, 130, 0.38), transparent 38rem),
+    var(--blush);
+  background-attachment: fixed;
+}
+
+/* Icy colour washes behind the whole site */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 4%, var(--f-wash-1), transparent 30rem),
+    radial-gradient(ellipse at 4% 60%, var(--f-wash-2), transparent 30rem),
+    radial-gradient(ellipse at 94% 90%, var(--f-wash-3), transparent 28rem);
+}
+
+/* ---------- Frosted surfaces: panels, cards, contact box ---------- */
+.glass-panel,
+.glass-card,
+#contact > div {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    var(--f-fill-1) 0%,
+    var(--f-fill-2) 55%,
+    var(--f-fill-3) 100%
+  );
+  border-color: var(--f-border);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 var(--f-edge),
+    inset 0 -1px 0 var(--f-edge-lo),
+    inset 0 0 28px var(--f-glow);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  backdrop-filter: blur(28px) saturate(165%);
+}
+
+/* frosted grain */
+.glass-panel::before,
+.glass-card::before,
+#contact > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: var(--frost-noise);
+  opacity: var(--f-grain-opacity);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* ice sheen */
+.glass-panel::after,
+.glass-card::after,
+#contact > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(115deg, transparent 30%, var(--f-sheen) 44%, transparent 52%),
+    radial-gradient(120% 80% at 0% 0%, var(--f-sheen), transparent 55%);
+  opacity: var(--f-sheen-opacity);
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.glass-card:hover {
+  background: linear-gradient(
+    135deg,
+    var(--f-hover-1) 0%,
+    var(--f-hover-2) 55%,
+    var(--f-hover-3) 100%
+  );
+  box-shadow:
+    0 24px 60px var(--f-header-shadow),
+    inset 0 1px 0 var(--f-edge),
+    inset 0 0 32px var(--f-glow-hover);
+}
+
+.glass-card:hover::after {
+  opacity: var(--f-sheen-opacity-hover);
+}
+
+/* ---------- Header ---------- */
+header {
+  background: linear-gradient(180deg, var(--f-header-1), var(--f-header-2)) !important;
+  box-shadow:
+    0 8px 30px var(--f-header-shadow),
+    inset 0 1px 0 var(--f-edge),
+    inset 0 -1px 0 var(--f-edge-lo);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+  backdrop-filter: blur(26px) saturate(170%);
+}
+
+/* ---------- Contact fields ---------- */
+#contact input,
+#contact textarea {
+  background-color: var(--f-field);
+  border-color: var(--f-field-border);
+  box-shadow:
+    inset 0 1px 3px var(--f-field-inset),
+    inset 0 1px 0 var(--f-edge-lo);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 180ms ease, background-color 180ms ease;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  background-color: var(--f-field-focus);
+  outline: none;
+  box-shadow:
+    inset 0 1px 3px var(--f-field-inset),
+    0 0 0 3px rgba(228, 120, 236, 0.32);
+}
+
+/* ---------- Hero scene (colour blobs the glass blurs over) ---------- */
+.frost-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.frost-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+  animation: frost-drift 22s ease-in-out infinite alternate;
+}
+
+.frost-blob--pink {
+  width: 28rem;
+  height: 28rem;
+  top: -6rem;
+  left: -8rem;
+  background: radial-gradient(circle at 30% 30%, var(--pink), var(--pink-deep) 60%, transparent 72%);
+  opacity: var(--f-blob-pink-o);
+}
+
+.frost-blob--ice {
+  width: 32rem;
+  height: 32rem;
+  top: 8rem;
+  right: -10rem;
+  background: radial-gradient(circle at 60% 40%, #b4daff, #7fb8ff 55%, transparent 72%);
+  opacity: var(--f-blob-ice-o);
+  animation-delay: -7s;
+}
+
+.frost-blob--lilac {
+  width: 26rem;
+  height: 26rem;
+  bottom: -8rem;
+  left: 30%;
+  background: radial-gradient(circle at 50% 50%, #d9c4ff, #b79bff 55%, transparent 72%);
+  opacity: var(--f-blob-lilac-o);
+  animation-delay: -13s;
+}
+
+@keyframes frost-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(3rem, 2rem, 0) scale(1.08); }
+}
+
+/* floating glass shards behind the hero panel */
+.frost-shard {
+  position: absolute;
+  border-radius: 2rem;
+  pointer-events: none;
+  animation: frost-float 9s ease-in-out infinite alternate;
+}
+
+@keyframes frost-float {
+  from { transform: translateY(0) rotate(var(--r, 12deg)); }
+  to   { transform: translateY(-14px) rotate(calc(var(--r, 12deg) + 4deg)); }
+}
+
+/* ---------- Small frosted pill (badge) ---------- */
+.frost-pill {
+  background: linear-gradient(135deg, var(--f-pill-1), var(--f-pill-2));
+  border: 1px solid var(--f-border);
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    0 10px 26px -14px var(--f-shadow);
+  -webkit-backdrop-filter: blur(16px) saturate(155%);
+  backdrop-filter: blur(16px) saturate(155%);
+}
+
+/* ---------- Buttons ---------- */
+.frost-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    background 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease;
+}
+
+.frost-btn:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
+
+/* light sweep on hover */
+.frost-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+}
+
+.frost-btn:hover::after {
+  transform: translateX(120%);
+}
+
+/* primary: plum glass in light mode, bright pink glass in dark mode */
+.frost-btn--primary {
+  color: var(--f-btn1-color);
+  background: var(--f-btn1-bg);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.14),
+    0 14px 30px -12px var(--f-btn1-shadow);
+}
+
+.frost-btn--primary:hover {
+  transform: translateY(-2px);
+  color: var(--f-btn1-hover-color);
+  background: var(--f-btn1-hover-bg);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 18px 36px -12px var(--f-btn1-hover-shadow),
+    0 0 0 4px rgba(255, 255, 255, 0.22);
+}
+
+/* secondary: clear frosted glass */
+.frost-btn--secondary {
+  color: var(--plum);
+  background: linear-gradient(135deg, var(--f-pill-1), var(--f-pill-2));
+  border: 1px solid var(--f-border);
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    0 10px 24px -14px var(--f-shadow);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+
+.frost-btn--secondary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--f-btn2-hover-1), var(--f-btn2-hover-2));
+  border-color: var(--f-edge);
+}
+
+/* ---------- Stat tiles ---------- */
+.frost-tile {
+  background: linear-gradient(180deg, var(--f-tile-1), var(--f-tile-2));
+  border: 1px solid var(--f-border);
+  box-shadow: inset 0 1px 0 var(--f-edge);
+  transition: transform 250ms ease, background 250ms ease;
+}
+
+.frost-tile:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, var(--f-tile-hover-1), var(--f-tile-hover-2));
+}
+
+/* ---------- Team slider ---------- */
+.frost-avatar {
+  background: linear-gradient(
+    135deg,
+    var(--f-avatar-1),
+    var(--f-avatar-2) 50%,
+    var(--f-avatar-3)
+  );
+  border: 1px solid var(--f-border);
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    inset 0 0 30px var(--f-glow-hover);
+}
+
+/* Round frosted icon buttons (slider arrows + theme toggle) */
+.frost-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  color: var(--plum);
+  background: linear-gradient(135deg, var(--f-pill-1), var(--f-pill-2));
+  border: 1px solid var(--f-border);
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    0 10px 24px -14px var(--f-shadow);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.frost-icon-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--f-icon-hover-1), var(--f-icon-hover-2));
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    0 14px 28px -12px rgba(228, 120, 236, 0.5);
+}
+
+.frost-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.frost-icon-btn:focus-visible,
+button:focus-visible .frost-dot {
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
+
+/* Pagination dots: active one stretches into a pink pill */
+.frost-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--f-dot);
+  border: 1px solid var(--f-dot-border);
+  transition:
+    width 260ms ease,
+    background 260ms ease;
+}
+
+button[aria-current="true"] .frost-dot {
+  width: 1.5rem;
+  background: linear-gradient(90deg, var(--pink-deep), var(--pink));
+}
+
+/* Right-hand team text: fades and rises in from a soft blur */
+.frost-swap {
+  animation: frost-swap-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes frost-swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ---------- Floating dark-theme toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  width: 3rem;
+  height: 3rem;
+  box-shadow:
+    inset 0 1px 0 var(--f-edge),
+    0 16px 34px -12px var(--f-shadow);
+}
+
+.theme-toggle svg {
+  transition: transform 400ms ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(18deg);
+}
+
+/* moon shows in light mode (click = go dark), sun shows in dark mode */
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+/* ---------- Header nav: active-section underline ---------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--pink-deep), var(--pink));
+  box-shadow: 0 0 10px rgba(228, 120, 236, 0.55);
+  transform: scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+/* soft hint on hover */
+.nav-link:hover::after {
+  transform: scaleX(0.4);
+  opacity: 0.7;
+}
+
+/* the section currently in view: full-width glowing underline */
+.nav-link[aria-current="location"]::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after {
+    transition: none;
+  }
+}
+
+/* ---------- Fallbacks & accessibility ---------- */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-panel,
+  .glass-card,
+  #contact > div,
+  .frost-pill,
+  .frost-btn--secondary,
+  .frost-icon-btn {
+    background: var(--f-solid);
+  }
+
+  header {
+    background: var(--f-solid) !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel,
+  .glass-card,
+  #contact > div,
+  .frost-pill,
+  .frost-btn--secondary,
+  .frost-icon-btn,
+  .frost-tile {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--f-solid);
+  }
+
+  header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--f-solid) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frost-blob,
+  .frost-shard {
+    animation: none;
+  }
+
+  .frost-btn,
+  .frost-tile,
+  .frost-icon-btn,
+  .frost-dot,
+  .theme-toggle svg {
+    transition: none;
+  }
+
+  .frost-btn::after {
+    display: none;
+  }
+
+  .frost-swap {
+    animation: none;
   }
 }

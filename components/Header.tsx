@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -14,9 +14,64 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const marker = window.scrollY + 160;
+
+        // The active section is the one whose top is closest to (but not below)
+        // the marker. This no longer depends on the order of the `links` array,
+        // so it stays correct even if the nav order differs from the page order.
+        let current = "";
+        let currentTop = -Infinity;
+
+        // The section that sits lowest on the page, used for the bottom-of-page case.
+        let lastHref = "";
+        let lastTop = -Infinity;
+
+        links.forEach(({ href }) => {
+          const section = document.querySelector(href);
+          if (!section) return;
+          const top = section.getBoundingClientRect().top + window.scrollY;
+
+          if (top <= marker && top > currentTop) {
+            current = href;
+            currentTop = top;
+          }
+          if (top > lastTop) {
+            lastTop = top;
+            lastHref = href;
+          }
+        });
+
+        // A short last section (like Contact) may never reach the marker, because
+        // the page runs out of room to scroll. At the very bottom, highlight it anyway.
+        const atBottom =
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 4;
+
+        setActiveSection(atBottom && lastHref ? lastHref : current);
+      });
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-blush/90 backdrop-blur-md">
+    <header className="sticky top-0 z-20 border-b border-line">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
         <a href="#top" className="font-display text-xl font-medium tracking-tight">
           Ivy Gaye Villafranca
@@ -29,7 +84,10 @@ export default function Header() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-[0.96rem] text-mauve transition-colors hover:text-plum"
+                    aria-current={activeSection === l.href ? "location" : undefined}
+                    className={`nav-link text-[0.96rem] transition-colors hover:text-plum ${
+                      activeSection === l.href ? "text-plum" : "text-mauve"
+                    }`}
                   >
                     {l.label}
                   </a>
@@ -39,7 +97,7 @@ export default function Header() {
           </nav>
           <a
             href="#contact"
-            className="rounded-full border border-line px-6 py-3 text-sm font-medium transition hover:border-pink-soft hover:bg-pink-soft"
+            className="frost-btn frost-btn--secondary rounded-full px-6 py-3 text-sm font-medium"
           >
             Book a call
           </a>
@@ -75,7 +133,10 @@ export default function Header() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-[0.98rem] text-mauve"
+                  aria-current={activeSection === l.href ? "location" : undefined}
+                  className={`nav-link inline-block text-[0.98rem] transition-colors ${
+                    activeSection === l.href ? "text-plum" : "text-mauve"
+                  }`}
                 >
                   {l.label}
                 </a>
@@ -85,7 +146,7 @@ export default function Header() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="inline-block rounded-full bg-plum px-6 py-3 text-sm font-medium text-blush"
+                className="frost-btn frost-btn--primary inline-block rounded-full px-6 py-3 text-sm font-medium"
               >
                 Book a call
               </a>
