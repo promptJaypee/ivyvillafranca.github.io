@@ -1,9 +1,12 @@
 const testimonials = [
   {
     quote:
-      "My inbox used to be the first thing I dreaded every morning. Now it's already sorted by the time I sit down.",
-    name: "Priya Nair",
-    role: "Founder, a design studio",
+      "Ivy really knows her craft. She's responsive, always sees a project through from start to finish, and brings creative ideas and expertise I wouldn’t have thought of myself - especially around SEO and generating organic leads and traffic.
+Beyond her excellent social media management, Ivy is extremely skilled at graphic design, which has been a massive asset to our brand.
+She is incredibly dependable and proactive. As the #1 real estate team in New York City, we have a lot moving at once, and I can always count on her to take initiative and keep projects moving forward.
+She's been a valuable part of our team and is truly lovely to work with!",
+    name: "Julia",
+    role: "Douglas Elliman, real estate",
   },
   {
     quote:
